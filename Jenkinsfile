@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'cat test2-file.txt'
+                sh 'cat test2-file'
                 echo 'Deploy..'
             }
         }
