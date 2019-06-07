@@ -7,7 +7,13 @@ pipeline {
                         description: 'Choose your environment to deploy',
                         name: 'PARAM_ENV_DEPLOY')
             }
+
     stages {
+        stage('file-test2') {
+             steps {
+                echo 'File test 2'
+            }
+        }
         stage('Build') {
             when {
                 expression { params.PARAM_ENV_DEPLOY == 'DEV' }
@@ -50,6 +56,7 @@ pipeline {
                         }
                     }
                 }
+
                 stage('2. TST2 Deployment') {
                     when {
                         expression { params.PARAM_ENV_DEPLOY == 'TST2' }
@@ -67,6 +74,7 @@ pipeline {
                         }
                     }
                 }
+
                 stage('3. TST1 Deployment') {
                     when {
                         expression { params.PARAM_ENV_DEPLOY == 'TST1' }
@@ -101,6 +109,7 @@ pipeline {
                         }
                     }
                 }
+
                 stage('5. PROD Deployment') {
                     when {
                         expression { params.PARAM_ENV_DEPLOY == 'PROD' }
